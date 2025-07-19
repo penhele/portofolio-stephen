@@ -95,6 +95,7 @@ final List<ProjectModel> projectList = [
         'MoniClass adalah kamera pendeteksi smartphone di ruang kelas berbasis IoT dan AI. MoniClass diharapkan menjadi solusi ampuh dalam perkembangan kelas di masa yang akan datang demi menciptakan ruang kelas yang kondusif dan siswa tidak gampang terdistraksi oleh smartphone.',
     thumbnail: SImages.moniClass,
     duration: 'Jan 2025 — May 2025',
+    language: [Image.asset(SImages.python, height: 20)],
   ),
   ProjectModel(
     title: 'Klasifikasi Gambar Sampah',
