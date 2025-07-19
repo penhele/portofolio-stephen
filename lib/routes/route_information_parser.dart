@@ -20,7 +20,7 @@ class MyRouteInformationParser
   @override
   RouteInformation? restoreRouteInformation(PageConfiguration configuration) {
     return switch (configuration) {
-      HomePageConfiguration() => const RouteInformation(location: "/home"),
+      HomePageConfiguration() => const RouteInformation(location: "/"),
       UnknownPageConfiguration() => const RouteInformation(
         location: "/unknown",
       ),
