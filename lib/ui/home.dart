@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import '../model/project_list.dart';
+import '../utils/constants/colors.dart';
 import '../utils/constants/image_strings.dart';
 import '../utils/constants/sizes.dart';
+import '../utils/helpers/project_sort_helper.dart';
 import 'widget/project_card.dart';
 import 'widget/social_button.dart';
 
@@ -46,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                   ),
 
                   const SizedBox(height: SSizes.spaceBtwItems * 2),
-                  const Text(
+                  const SelectableText(
                     "Let's See My Project",
                     style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
@@ -60,10 +62,19 @@ class HomeScreen extends StatelessWidget {
                       double itemWidth =
                           (constraints.maxWidth - totalSpacing) / columnCount;
 
+                      final sortedProjects = [...projectList];
+                      sortedProjects.sort((a, b) {
+                        final aDate =
+                            parseEndDate(a.duration) ?? DateTime(1900);
+                        final bDate =
+                            parseEndDate(b.duration) ?? DateTime(1900);
+                        return bDate.compareTo(aDate);
+                      });
+
                       return Wrap(
                         spacing: spacing,
                         runSpacing: spacing,
-                        children: projectList.map((project) {
+                        children: sortedProjects.map((project) {
                           return SizedBox(
                             width: itemWidth,
                             child: ProjectCard(
@@ -73,6 +84,7 @@ class HomeScreen extends StatelessWidget {
                               thumbnail: project.thumbnail,
                               youtubebUrl: project.youtubeUrl,
                               documentUrl: project.documentUrl,
+                              duration: project.duration,
                             ),
                           );
                         }).toList(),
@@ -92,22 +104,56 @@ class HomeScreen extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Stephen Helenus',
-          style: Theme.of(
-            context,
-          ).textTheme.headlineMedium!.copyWith(fontWeight: FontWeight.bold),
+        LayoutBuilder(
+          builder: (context, constraints) {
+            bool isMobile = constraints.maxWidth < 800;
+
+            return isMobile
+                ? Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SelectableText(
+                        'Stephen Helenus R. Kaawoan',
+                        style: Theme.of(context).textTheme.headlineMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(height: SSizes.spaceBtwItems),
+                      SelectableText(
+                        'Mobile Developer | Machine Learning',
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: SColors.grey,
+                        ),
+                      ),
+                    ],
+                  )
+                : Row(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SelectableText(
+                        'Stephen Helenus R. Kaawoan',
+                        style: Theme.of(context).textTheme.headlineMedium!
+                            .copyWith(fontWeight: FontWeight.bold),
+                      ),
+                      const SizedBox(width: SSizes.spaceBtwSection),
+                      SelectableText(
+                        'Mobile Developer | Machine Learning',
+                        style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: SColors.grey,
+                        ),
+                      ),
+                    ],
+                  );
+          },
         ),
         const SizedBox(height: SSizes.spaceBtwItems),
 
-        Text(
+        SelectableText(
           'A passionate Informatics student from Universitas Gunadarma with strong experience in mobile development using Flutter and Dart. Built full-cycle applications with Firebase integration and implemented various mobile features. Currently seeking a Mobile Developer internship to apply and expand my skills in a real-world environment.',
           textAlign: TextAlign.justify,
-          style: Theme.of(context).textTheme.bodyMedium,
+          style: Theme.of(context).textTheme.bodyLarge,
         ),
-        const SizedBox(height: SSizes.spaceBtwItems),
-
-        OutlinedButton(onPressed: () {}, child: const Text('CV')),
         const SizedBox(height: SSizes.spaceBtwItems),
 
         const Wrap(
@@ -123,6 +169,11 @@ class HomeScreen extends StatelessWidget {
               url: 'https://linkedin.com/in/stephenhelenus',
               label: 'Linkedin',
               iconPath: SImages.linkedinLogo,
+            ),
+            SocialButton(
+              url: 'https://instagram.com/stephenhelenus',
+              label: 'Instagram',
+              iconPath: SImages.instagramLogo,
             ),
           ],
         ),

@@ -5,6 +5,7 @@ class SImages {
   static const linkedinLogo = 'assets/images/social/linkedin.png';
   static const youtubeLogo = 'assets/images/social/youtube.png';
   static const documentLogo = 'assets/images/social/document.png';
+  static const instagramLogo = 'assets/images/social/instagram.png';
 
   static const palindromeApp = 'assets/images/thumbnail/palindrome-app.png';
   static const mathApp = 'assets/images/thumbnail/math-app.png';
@@ -14,4 +15,7 @@ class SImages {
   static const pocketwiseApp = 'assets/images/thumbnail/pocketwise-app.png';
   static const analysisSentiment =
       'assets/images/thumbnail/analysis-sentiment.png';
+  static const moniClass = 'assets/images/thumbnail/moni-class.png';
+  static const klasifikasiSampah =
+      'assets/images/thumbnail/klasifikasi-sampah.png';
 }

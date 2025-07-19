@@ -14,14 +14,16 @@ class ProjectCard extends StatelessWidget {
     required this.thumbnail,
     this.youtubebUrl,
     this.documentUrl,
+    required this.duration,
   });
 
   final String title;
   final String description;
   final String thumbnail;
-  final String githubUrl;
+  final String? githubUrl;
   final String? youtubebUrl;
   final String? documentUrl;
+  final String duration;
 
   @override
   Widget build(BuildContext context) {
@@ -56,11 +58,30 @@ class ProjectCard extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: SSizes.spaceBtwItems),
-                Text(
-                  title,
-                  style: Theme.of(context).textTheme.titleMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
-                  ),
+                Row(
+                  children: [
+                    SelectableText(
+                      title,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    const Spacer(),
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 6,
+                        vertical: 3,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.indigo.shade100,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                      child: SelectableText(
+                        duration,
+                        style: Theme.of(context).textTheme.titleMedium,
+                      ),
+                    ),
+                  ],
                 ),
                 const Divider(),
                 Text(
@@ -74,27 +95,31 @@ class ProjectCard extends StatelessWidget {
 
                 Row(
                   children: [
-                    InkWell(
-                      onTap: () async {
-                        final Uri url = Uri.parse(githubUrl);
-                        if (await canLaunchUrl(url)) {
-                          await launchUrl(
-                            url,
-                            mode: LaunchMode.externalApplication,
-                          );
-                        }
-                      },
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(8),
-                            child: Image.asset(SImages.githubLogo, height: 20),
-                          ),
-                          const SizedBox(width: SSizes.spaceBtwMenu),
-                          const Text('Github'),
-                        ],
+                    if (githubUrl != null)
+                      InkWell(
+                        onTap: () async {
+                          final Uri url = Uri.parse(githubUrl!);
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(
+                              url,
+                              mode: LaunchMode.externalApplication,
+                            );
+                          }
+                        },
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                SImages.githubLogo,
+                                height: 20,
+                              ),
+                            ),
+                            const SizedBox(width: SSizes.spaceBtwMenu),
+                            const Text('Github'),
+                          ],
+                        ),
                       ),
-                    ),
 
                     if (youtubebUrl != null)
                       const SizedBox(width: SSizes.spaceBtwMenu),
