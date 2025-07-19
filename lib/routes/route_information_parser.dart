@@ -10,8 +10,7 @@ class MyRouteInformationParser
   ) async {
     final uri = routeInformation.uri;
 
-    if (uri.pathSegments.isEmpty ||
-        uri.pathSegments.first.toLowerCase() == 'home') {
+    if (uri.pathSegments.isEmpty) {
       return HomePageConfiguration();
     }
 
