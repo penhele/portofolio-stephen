@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../model/project_list.dart';
 import '../utils/constants/image_strings.dart';
 import '../utils/constants/sizes.dart';
 import 'widget/project_card.dart';
@@ -53,51 +54,28 @@ class HomeScreen extends StatelessWidget {
 
                   LayoutBuilder(
                     builder: (context, constraints) {
-                      int columnCount = 1;
-                      if (constraints.maxWidth > 800) {
-                        columnCount = 2;
-                      }
+                      const double spacing = 20;
+                      int columnCount = constraints.maxWidth > 800 ? 2 : 1;
+                      double totalSpacing = spacing * (columnCount - 1);
+                      double itemWidth =
+                          (constraints.maxWidth - totalSpacing) / columnCount;
 
                       return Wrap(
-                        spacing: 20,
-                        runSpacing: 20,
-                        children: [
-                          SizedBox(
-                            width: constraints.maxWidth / columnCount - 20,
-                            child: const ProjectCard(
-                              title: 'Palindrome App',
-                              description:
-                                  'Aplikasi ini merupakan aplikasi Flutter yang memiliki fitur utama untuk mengecek apakah sebuah kata atau kalimat merupakan palindrom. Selain itu, aplikasi ini juga dilengkapi dengan fitur untuk mengambil nama dari API publik serta fitur penggantian bahasa (multi-language) yang memungkinkan pengguna memilih bahasa sesuai preferensi. Untuk mendukung fungsionalitas dan tampilan aplikasi, digunakan beberapa library populer Flutter seperti get (versi 4.7.2) untuk manajemen state dan navigasi, provider (versi 6.1.5) untuk pengelolaan state berbasis data, serta shared_preferences (versi 2.5.3) untuk menyimpan preferensi pengguna secara lokal, seperti status bahasa. Aplikasi ini juga menggunakan flutter_switch (versi 0.3.2) sebagai switch kustom, iconsax (versi 0.0.8) untuk ikon-ikon modern, lottie (versi 3.3.1) untuk menampilkan animasi menarik, dan awesome_dialog (versi 3.2.1) untuk menampilkan dialog interaktif yang user-friendly. Dengan kombinasi fitur dan library tersebut, aplikasi ini dirancang agar interaktif, informatif, dan mudah digunakan.',
-                              githubUrl:
-                                  'https://github.com/penhele/palindrome_app',
-                              thumbnail: SImages.palindromeApp,
+                        spacing: spacing,
+                        runSpacing: spacing,
+                        children: projectList.map((project) {
+                          return SizedBox(
+                            width: itemWidth,
+                            child: ProjectCard(
+                              title: project.title,
+                              description: project.description,
+                              githubUrl: project.githubUrl,
+                              thumbnail: project.thumbnail,
+                              youtubebUrl: project.youtubeUrl,
+                              documentUrl: project.documentUrl,
                             ),
-                          ),
-                          SizedBox(
-                            width: constraints.maxWidth / columnCount - 20,
-                            child: const ProjectCard(
-                              title: 'Math App',
-                              description:
-                                  'Math App adalah proyek penulisan ilmiah',
-                              githubUrl:
-                                  'https://github.com/penhele/math-application',
-                              thumbnail: SImages.mathApp,
-                            ),
-                          ),
-                          SizedBox(
-                            width: constraints.maxWidth / columnCount - 20,
-                            child: const ProjectCard(
-                              title: 'Story App',
-                              description:
-                                  'Story App adalah aplikasi mobile yang memungkinkan pengguna untuk mengunggah dan melihat foto melalui koneksi ke API publik. Aplikasi ini mengusung konsep mirip Instagram dengan penambahan beberapa fitur fungsional lainnya.',
-                              githubUrl:
-                                  'https://github.com/penhele/math-application',
-                              youtubebUrl:
-                                  'https://youtube.com/shorts/tYRpsubjlXc',
-                              thumbnail: SImages.storyApp,
-                            ),
-                          ),
-                        ],
+                          );
+                        }).toList(),
                       );
                     },
                   ),

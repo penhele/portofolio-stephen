@@ -13,6 +13,7 @@ class ProjectCard extends StatelessWidget {
     required this.description,
     required this.thumbnail,
     this.youtubebUrl,
+    this.documentUrl,
   });
 
   final String title;
@@ -20,6 +21,7 @@ class ProjectCard extends StatelessWidget {
   final String thumbnail;
   final String githubUrl;
   final String? youtubebUrl;
+  final String? documentUrl;
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +70,7 @@ class ProjectCard extends StatelessWidget {
                   overflow: TextOverflow.ellipsis,
                   maxLines: 4,
                 ),
-                Spacer(),
+                const Spacer(),
 
                 Row(
                   children: [
@@ -118,7 +120,36 @@ class ProjectCard extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(width: SSizes.spaceBtwMenu),
-                            const Text('Github'),
+                            const Text('Youtube'),
+                          ],
+                        ),
+                      ),
+
+                    if (documentUrl != null)
+                      const SizedBox(width: SSizes.spaceBtwMenu),
+
+                    if (documentUrl != null)
+                      InkWell(
+                        onTap: () async {
+                          final Uri url = Uri.parse(documentUrl!);
+                          if (await canLaunchUrl(url)) {
+                            await launchUrl(
+                              url,
+                              mode: LaunchMode.externalApplication,
+                            );
+                          }
+                        },
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(8),
+                              child: Image.asset(
+                                SImages.documentLogo,
+                                height: 20,
+                              ),
+                            ),
+                            const SizedBox(width: SSizes.spaceBtwMenu),
+                            const Text('Document'),
                           ],
                         ),
                       ),
