@@ -78,7 +78,7 @@ class ProjectCard extends StatelessWidget {
                       ),
                       child: SelectableText(
                         duration,
-                        style: Theme.of(context).textTheme.titleMedium,
+                      style: Theme.of(context).textTheme.bodyMedium
                       ),
                     ),
                   ],
