@@ -16,6 +16,7 @@ dependencies:
   iconsax: ^0.0.8
   simple_icons: ^14.6.1
   url_launcher: ^6.3.2
+  url_strategy: ^0.3.0
 
 dev_dependencies:
   flutter_test:
