@@ -4,6 +4,10 @@ DateTime? parseEndDate(String? duration) {
   final parts = duration.split('—');
   final endPart = parts.length == 2 ? parts[1].trim() : parts[0].trim();
 
+  if (endPart.toLowerCase() == 'present') {
+    return DateTime(9999);
+  }
+
   try {
     return _monthYearToDate(endPart);
   } catch (_) {

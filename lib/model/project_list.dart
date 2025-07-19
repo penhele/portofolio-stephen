@@ -110,4 +110,16 @@ final List<ProjectModel> projectList = [
       Image.asset(SImages.colab, height: 20),
     ],
   ),
+  ProjectModel(
+    title: 'T Store',
+    description:
+        'A dummy e-commerce application with Firebase Authentication, real-time database integration, and dynamic product management UI using Provider state management.',
+    thumbnail: SImages.tsoreApp,
+    duration: 'Apr 2025 — Present',
+    githubUrl: 'https://github.com/penhele/t_store',
+    language: [
+      Image.asset(SImages.dart, height: 20),
+      Image.asset(SImages.flutter, height: 20),
+    ],
+  ),
 ];

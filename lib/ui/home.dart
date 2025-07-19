@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../model/project_list.dart';
+import '../model/project_model.dart';
 import '../utils/constants/colors.dart';
 import '../utils/constants/image_strings.dart';
 import '../utils/constants/sizes.dart';
@@ -63,14 +64,14 @@ class HomeScreen extends StatelessWidget {
                       double itemWidth =
                           (constraints.maxWidth - totalSpacing) / columnCount;
 
-                      final sortedProjects = [...projectList];
-                      sortedProjects.sort((a, b) {
-                        final aDate =
-                            parseEndDate(a.duration) ?? DateTime(1900);
-                        final bDate =
-                            parseEndDate(b.duration) ?? DateTime(1900);
-                        return bDate.compareTo(aDate);
-                      });
+                      final List<ProjectModel> sortedProjects = [...projectList]
+                        ..sort((a, b) {
+                          final DateTime aDate =
+                              parseEndDate(a.duration) ?? DateTime(1900);
+                          final DateTime bDate =
+                              parseEndDate(b.duration) ?? DateTime(1900);
+                          return bDate.compareTo(aDate);
+                        });
 
                       return Wrap(
                         spacing: spacing,
