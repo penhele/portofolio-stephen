@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 class ProjectModel {
   final String title;
   final String description;
@@ -6,6 +8,7 @@ class ProjectModel {
   final String? youtubeUrl;
   final String? documentUrl;
   final String duration;
+  final List<Widget>? language;
 
   ProjectModel({
     required this.title,
@@ -15,5 +18,6 @@ class ProjectModel {
     this.youtubeUrl,
     this.documentUrl,
     required this.duration,
+    this.language,
   });
 }

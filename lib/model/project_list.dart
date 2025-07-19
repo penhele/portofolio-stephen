@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 import '../model/project_model.dart';
 import '../utils/constants/image_strings.dart';
 
@@ -9,6 +11,10 @@ final List<ProjectModel> projectList = [
     githubUrl: 'https://github.com/penhele/palindrome_app',
     thumbnail: SImages.palindromeApp,
     duration: 'Jul 2025',
+    language: [
+      Image.asset(SImages.dart, height: 20),
+      Image.asset(SImages.flutter, height: 20),
+    ],
   ),
   ProjectModel(
     title: 'Math App',
@@ -17,6 +23,10 @@ final List<ProjectModel> projectList = [
     githubUrl: 'https://github.com/penhele/math-application',
     thumbnail: SImages.mathApp,
     duration: 'Jun 2025 — Jul 2025',
+    language: [
+      Image.asset(SImages.dart, height: 20),
+      Image.asset(SImages.flutter, height: 20),
+    ],
   ),
   ProjectModel(
     title: 'Story App',
@@ -26,6 +36,10 @@ final List<ProjectModel> projectList = [
     youtubeUrl: 'https://youtube.com/shorts/tYRpsubjlXc',
     thumbnail: SImages.storyApp,
     duration: 'Mar 2025',
+    language: [
+      Image.asset(SImages.dart, height: 20),
+      Image.asset(SImages.flutter, height: 20),
+    ],
   ),
   ProjectModel(
     title: 'Restaurant App',
@@ -34,6 +48,10 @@ final List<ProjectModel> projectList = [
     githubUrl: 'https://github.com/penhele/restaurant_app_favorite',
     thumbnail: SImages.restaurantApp,
     duration: 'Feb 2025',
+    language: [
+      Image.asset(SImages.dart, height: 20),
+      Image.asset(SImages.flutter, height: 20),
+    ],
   ),
   ProjectModel(
     title: 'Habit App',
@@ -42,6 +60,10 @@ final List<ProjectModel> projectList = [
     githubUrl: 'https://github.com/penhele/habit-app',
     thumbnail: SImages.habitApp,
     duration: 'Jul 2025',
+    language: [
+      Image.asset(SImages.react, height: 20),
+      Image.asset(SImages.expo, height: 20),
+    ],
   ),
   ProjectModel(
     title: 'PocketWise',
@@ -60,6 +82,12 @@ final List<ProjectModel> projectList = [
     githubUrl: 'https://github.com/penhele/proyek-analisis-sentimen/',
     thumbnail: SImages.analysisSentiment,
     duration: 'Apr 2025',
+    language: [
+      Image.asset(SImages.python, height: 20),
+      Image.asset(SImages.tensorflow, height: 20),
+      Image.asset(SImages.sklearn, height: 20),
+      Image.asset(SImages.colab, height: 20),
+    ],
   ),
   ProjectModel(
     title: 'MoniClass',
@@ -74,5 +102,11 @@ final List<ProjectModel> projectList = [
         'Proyek klasifikasi gambar ini dikembangkan untuk mengidentifikasi jenis sampah menggunakan model ResNet50 pralatih dari ImageNet yang dikombinasikan dengan lapisan tambahan. Dataset diambil dari Kaggle (12 kelas sampah). Model akhir diekspor dalam tiga format: SavedModel, TF-Lite, dan TensorFlow.js, sehingga dapat digunakan di web, mobile, dan sistem tertanam. Proyek ini mendukung solusi AI untuk pengelolaan sampah berbasis klasifikasi gambar.',
     thumbnail: SImages.klasifikasiSampah,
     duration: 'May 2025',
+    language: [
+      Image.asset(SImages.python, height: 20),
+      Image.asset(SImages.tensorflow, height: 20),
+      Image.asset(SImages.sklearn, height: 20),
+      Image.asset(SImages.colab, height: 20),
+    ],
   ),
 ];

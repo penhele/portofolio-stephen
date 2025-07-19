@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 import '../../utils/constants/colors.dart';
 import '../../utils/constants/image_strings.dart';
 import '../../utils/constants/sizes.dart';
+import '../../utils/constants/text_strings.dart';
+import 'social_button.dart';
 
 class ProjectCard extends StatelessWidget {
   const ProjectCard({
@@ -15,6 +16,7 @@ class ProjectCard extends StatelessWidget {
     this.youtubebUrl,
     this.documentUrl,
     required this.duration,
+    this.language,
   });
 
   final String title;
@@ -24,6 +26,7 @@ class ProjectCard extends StatelessWidget {
   final String? youtubebUrl;
   final String? documentUrl;
   final String duration;
+  final List<Widget>? language;
 
   @override
   Widget build(BuildContext context) {
@@ -78,7 +81,7 @@ class ProjectCard extends StatelessWidget {
                       ),
                       child: SelectableText(
                         duration,
-                      style: Theme.of(context).textTheme.bodyMedium
+                        style: Theme.of(context).textTheme.bodyMedium,
                       ),
                     ),
                   ],
@@ -94,90 +97,40 @@ class ProjectCard extends StatelessWidget {
                 const Spacer(),
 
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    if (githubUrl != null)
-                      InkWell(
-                        onTap: () async {
-                          final Uri url = Uri.parse(githubUrl!);
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(
-                              url,
-                              mode: LaunchMode.externalApplication,
-                            );
-                          }
-                        },
-                        child: Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                SImages.githubLogo,
-                                height: 20,
-                              ),
-                            ),
-                            const SizedBox(width: SSizes.spaceBtwMenu),
-                            const Text('Github'),
-                          ],
-                        ),
-                      ),
+                    Row(
+                      children: [
+                        if (githubUrl != null)
+                          SocialButton(
+                            url: githubUrl!,
+                            label: STexts.github,
+                            iconPath: SImages.githubLogo,
+                          ),
 
-                    if (youtubebUrl != null)
-                      const SizedBox(width: SSizes.spaceBtwMenu),
+                        if (youtubebUrl != null)
+                          const SizedBox(width: SSizes.spaceBtwMenu),
 
-                    if (youtubebUrl != null)
-                      InkWell(
-                        onTap: () async {
-                          final Uri url = Uri.parse(youtubebUrl!);
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(
-                              url,
-                              mode: LaunchMode.externalApplication,
-                            );
-                          }
-                        },
-                        child: Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                SImages.youtubeLogo,
-                                height: 20,
-                              ),
-                            ),
-                            const SizedBox(width: SSizes.spaceBtwMenu),
-                            const Text('Youtube'),
-                          ],
-                        ),
-                      ),
+                        if (youtubebUrl != null)
+                          SocialButton(
+                            url: youtubebUrl!,
+                            label: STexts.youtube,
+                            iconPath: SImages.youtubeLogo,
+                          ),
 
-                    if (documentUrl != null)
-                      const SizedBox(width: SSizes.spaceBtwMenu),
+                        if (documentUrl != null)
+                          const SizedBox(width: SSizes.spaceBtwMenu),
 
-                    if (documentUrl != null)
-                      InkWell(
-                        onTap: () async {
-                          final Uri url = Uri.parse(documentUrl!);
-                          if (await canLaunchUrl(url)) {
-                            await launchUrl(
-                              url,
-                              mode: LaunchMode.externalApplication,
-                            );
-                          }
-                        },
-                        child: Row(
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8),
-                              child: Image.asset(
-                                SImages.documentLogo,
-                                height: 20,
-                              ),
-                            ),
-                            const SizedBox(width: SSizes.spaceBtwMenu),
-                            const Text('Document'),
-                          ],
-                        ),
-                      ),
+                        if (documentUrl != null)
+                          SocialButton(
+                            url: documentUrl!,
+                            label: STexts.document,
+                            iconPath: SImages.documentLogo,
+                          ),
+                      ],
+                    ),
+                    if (language != null)
+                      Row(spacing: SSizes.spaceBtwMenu, children: language!),
                   ],
                 ),
               ],

@@ -4,6 +4,7 @@ import '../model/project_list.dart';
 import '../utils/constants/colors.dart';
 import '../utils/constants/image_strings.dart';
 import '../utils/constants/sizes.dart';
+import '../utils/constants/text_strings.dart';
 import '../utils/helpers/project_sort_helper.dart';
 import 'widget/project_card.dart';
 import 'widget/social_button.dart';
@@ -85,6 +86,7 @@ class HomeScreen extends StatelessWidget {
                               youtubebUrl: project.youtubeUrl,
                               documentUrl: project.documentUrl,
                               duration: project.duration,
+                              language: project.language,
                             ),
                           );
                         }).toList(),
@@ -113,7 +115,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       SelectableText(
-                        'Stephen Helenus R. Kaawoan',
+                        STexts.name,
                         style: Theme.of(context).textTheme.headlineMedium!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
@@ -131,7 +133,7 @@ class HomeScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       SelectableText(
-                        'Stephen Helenus R. Kaawoan',
+                        STexts.name,
                         style: Theme.of(context).textTheme.headlineMedium!
                             .copyWith(fontWeight: FontWeight.bold),
                       ),
@@ -150,7 +152,7 @@ class HomeScreen extends StatelessWidget {
         const SizedBox(height: SSizes.spaceBtwItems),
 
         SelectableText(
-          'A passionate Informatics student from Universitas Gunadarma with strong experience in mobile development using Flutter and Dart. Built full-cycle applications with Firebase integration and implemented various mobile features. Currently seeking a Mobile Developer internship to apply and expand my skills in a real-world environment.',
+          STexts.description,
           textAlign: TextAlign.justify,
           style: Theme.of(context).textTheme.bodyLarge,
         ),
@@ -162,17 +164,17 @@ class HomeScreen extends StatelessWidget {
           children: [
             SocialButton(
               url: 'https://github.com/penhele',
-              label: 'Github',
+              label: STexts.github,
               iconPath: SImages.githubLogo,
             ),
             SocialButton(
               url: 'https://linkedin.com/in/stephenhelenus',
-              label: 'Linkedin',
+              label: STexts.linkedin,
               iconPath: SImages.linkedinLogo,
             ),
             SocialButton(
               url: 'https://instagram.com/stephenhelenus',
-              label: 'Instagram',
+              label: STexts.instagram,
               iconPath: SImages.instagramLogo,
             ),
           ],

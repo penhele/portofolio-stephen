@@ -18,4 +18,13 @@ class SImages {
   static const moniClass = 'assets/images/thumbnail/moni-class.png';
   static const klasifikasiSampah =
       'assets/images/thumbnail/klasifikasi-sampah.png';
+
+  static const python = 'assets/images/language/python.png';
+  static const dart = 'assets/images/language/dart.png';
+  static const flutter = 'assets/images/language/flutter.png';
+  static const react = 'assets/images/language/react.png';
+  static const expo = 'assets/images/language/expo.png';
+  static const sklearn = 'assets/images/language/sklearn.png';
+  static const tensorflow = 'assets/images/language/tensorflow.png';
+  static const colab = 'assets/images/language/colab.png';
 }
