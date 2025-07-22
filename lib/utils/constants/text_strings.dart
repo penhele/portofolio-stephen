@@ -1,7 +1,7 @@
 class STexts {
   static const String name = "Stephen Helenus R. Kaawoan";
   static const String description =
-      "A passionate Informatics student from Universitas Gunadarma with strong experience in mobile development using Flutter and Dart. Built full-cycle applications with Firebase integration and implemented various mobile features. Currently seeking a Mobile Developer internship to apply and expand my skills in a real-world environment.";
+      "Seorang mahasiswa Informatika yang antusias dari Universitas Gunadarma dengan pengalaman kuat dalam pengembangan aplikasi mobile menggunakan Flutter dan Dart. Telah membangun aplikasi secara menyeluruh dengan integrasi Firebase serta mengimplementasikan berbagai fitur mobile. Saat ini sedang mencari kesempatan magang sebagai Mobile Developer untuk menerapkan dan mengembangkan keterampilan di lingkungan kerja nyata.";
 
   static const String instagram = "Instagram";
   static const String linkedin = "Linkedin";

@@ -115,7 +115,7 @@ final List<ProjectModel> projectList = [
   ProjectModel(
     title: 'T Store',
     description:
-        'A dummy e-commerce application with Firebase Authentication, real-time database integration, and dynamic product management UI using Provider state management.',
+        'Aplikasi e-commerce dummy dengan fitur Firebase Authentication, integrasi real-time database, dan antarmuka manajemen produk dinamis menggunakan manajemen state Provider.',
     thumbnail: SImages.tsoreApp,
     duration: 'Apr 2025 — Present',
     githubUrl: 'https://github.com/penhele/t_store',
