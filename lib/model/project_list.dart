@@ -94,6 +94,7 @@ final List<ProjectModel> projectList = [
         'MoniClass adalah kamera pendeteksi smartphone di ruang kelas berbasis IoT dan AI. MoniClass diharapkan menjadi solusi ampuh dalam perkembangan kelas di masa yang akan datang demi menciptakan ruang kelas yang kondusif dan siswa tidak gampang terdistraksi oleh smartphone.',
     thumbnail: SImages.moniClass,
     duration: 'Jan 2025 — May 2025',
+    githubUrl: 'https://github.com/reyhkm/DETEKSI_HP_KELAS',
     language: [Image.asset(SImages.python, height: 20)],
   ),
   ProjectModel(
@@ -102,6 +103,8 @@ final List<ProjectModel> projectList = [
         'Proyek klasifikasi gambar telah dikembangkan untuk mengidentifikasi jenis sampah menggunakan pendekatan deep learning. Model yang digunakan berbasis ResNet50 dengan bobot pralatih dari ImageNet dan dikombinasikan dengan beberapa lapisan konvolusi tambahan, batch normalization, dan dense layer untuk meningkatkan performa klasifikasi. Dataset yang digunakan berasal dari Kaggle: https://www.kaggle.com/datasets/mostafaabla/garbage-classification, yang terdiri dari 12 kelas kategori sampah.\n\nSetelah proses pelatihan selesai, model disimpan dalam tiga format: SavedModel, TF-Lite, dan TensorFlow.js (TFJS), agar dapat digunakan pada berbagai platform seperti web, mobile, dan embedded system. Proyek ini bertujuan untuk mendukung solusi pengelolaan sampah berbasis kecerdasan buatan melalui teknologi klasifikasi gambar.',
     thumbnail: SImages.klasifikasiSampah,
     duration: 'May 2025',
+    githubUrl:
+        'https://drive.google.com/drive/u/0/folders/11VgccUCyv9dL4Oa6VW_FYqXJrEqdmbLl',
     language: [
       Image.asset(SImages.python, height: 20),
       Image.asset(SImages.tensorflow, height: 20),
