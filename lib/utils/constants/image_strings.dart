@@ -28,4 +28,5 @@ class SImages {
   static const sklearn = 'assets/images/language/sklearn.png';
   static const tensorflow = 'assets/images/language/tensorflow.png';
   static const colab = 'assets/images/language/colab.png';
+  static const firebase = 'assets/images/language/firebase.png';
 }

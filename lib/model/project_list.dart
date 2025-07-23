@@ -122,6 +122,7 @@ final List<ProjectModel> projectList = [
     language: [
       Image.asset(SImages.dart, height: 20),
       Image.asset(SImages.flutter, height: 20),
+      Image.asset(SImages.firebase, height: 20),
     ],
   ),
 ];
