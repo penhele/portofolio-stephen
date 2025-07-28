@@ -18,7 +18,8 @@ class SImages {
   static const moniClass = 'assets/images/thumbnail/moni-class.png';
   static const klasifikasiSampah =
       'assets/images/thumbnail/klasifikasi-sampah.png';
-  static const tsoreApp = 'assets/images/thumbnail/tstore-app.png';
+  static const tstoreApp = 'assets/images/thumbnail/tstore-app.png';
+  static const ecommerceApp = 'assets/images/thumbnail/ecommerce-app.png';
 
   static const python = 'assets/images/language/python.png';
   static const dart = 'assets/images/language/dart.png';

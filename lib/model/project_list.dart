@@ -116,13 +116,26 @@ final List<ProjectModel> projectList = [
     title: 'T Store',
     description:
         'Aplikasi e-commerce dummy dengan fitur Firebase Authentication, integrasi real-time database, dan antarmuka manajemen produk dinamis menggunakan manajemen state Provider.',
-    thumbnail: SImages.tsoreApp,
-    duration: 'Apr 2025 — Present',
+    thumbnail: SImages.tstoreApp,
+    duration: 'Apr 2025 — Jun',
     githubUrl: 'https://github.com/penhele/t_store',
     language: [
       Image.asset(SImages.dart, height: 20),
       Image.asset(SImages.flutter, height: 20),
       Image.asset(SImages.firebase, height: 20),
+    ],
+  ),
+  ProjectModel(
+    title: 'E-Commerce App',
+    description:
+        'Sebuah aplikasi e-commerce yang dibangun dengan visual yang menarik. Aplikasi menggunakan warna orange sebagai warna dasar. Saya membangun aplikasi ini dengan tutorial di youtube dan saya mengembangkan lebih lanjut mengenai aplikasi ini. Sumber saya cantumkan di youtube bawah ini.',
+    thumbnail: SImages.ecommerceApp,
+    duration: 'Jul — Present',
+    githubUrl: 'https://github.com/penhele/ecommerce-app',
+    youtubeUrl: 'https://youtu.be/rX9kvw79kgk',
+    language: [
+      Image.asset(SImages.dart, height: 20),
+      Image.asset(SImages.flutter, height: 20),
     ],
   ),
 ];
