@@ -38,6 +38,8 @@ class _ProjectCardState extends State<ProjectCard> {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return LayoutBuilder(
       builder: (context, constraints) {
         final bool isMobile = constraints.maxWidth < 600;
@@ -127,18 +129,23 @@ class _ProjectCardState extends State<ProjectCard> {
 
                             Container(
                               padding: const EdgeInsets.symmetric(
-                                horizontal: 6,
+                                horizontal: 8,
                                 vertical: 3,
                               ),
                               decoration: BoxDecoration(
-                                color: Colors.indigo.shade100,
+                                color: SColors.primary,
                                 borderRadius: BorderRadius.circular(
                                   SSizes.radiusInside,
                                 ),
                               ),
                               child: SelectableText(
                                 widget.duration,
-                                style: Theme.of(context).textTheme.bodyMedium,
+                                style: Theme.of(context).textTheme.bodyMedium!
+                                    .copyWith(
+                                      color: isDark
+                                          ? Colors.black
+                                          : Colors.white,
+                                    ),
                               ),
                             ),
                           ],
@@ -167,25 +174,25 @@ class _ProjectCardState extends State<ProjectCard> {
                                     iconPath: SImages.githubLogo,
                                   ),
 
-                                if (widget.youtubebUrl != null)
+                                if (widget.youtubebUrl != null) ...[
                                   const SizedBox(width: SSizes.spaceBtwMenu),
 
-                                if (widget.youtubebUrl != null)
                                   SocialButton(
                                     url: widget.youtubebUrl!,
                                     label: STexts.youtube,
                                     iconPath: SImages.youtubeLogo,
                                   ),
+                                ],
 
-                                if (widget.documentUrl != null)
+                                if (widget.documentUrl != null) ...[
                                   const SizedBox(width: SSizes.spaceBtwMenu),
 
-                                if (widget.documentUrl != null)
                                   SocialButton(
                                     url: widget.documentUrl!,
                                     label: STexts.document,
                                     iconPath: SImages.documentLogo,
                                   ),
+                                ],
                               ],
                             ),
                             if (widget.language != null)

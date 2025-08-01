@@ -107,9 +107,13 @@ class HomeScreen extends StatelessWidget {
                           ),
                           const SizedBox(height: SSizes.spaceBtwSection),
 
-                          ElevatedButton(
-                            onPressed: () => provider.toggle(),
-                            child: Text(showAll ? 'Show Less' : 'Show More'),
+                          SizedBox(
+                            width: double.infinity,
+                            child: ElevatedButton(
+                              style: ElevatedButton.styleFrom(),
+                              onPressed: () => provider.toggle(),
+                              child: Text(showAll ? 'Show Less' : 'Show More'),
+                            ),
                           ),
                         ],
                       );

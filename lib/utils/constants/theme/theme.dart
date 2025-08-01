@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'costum_themes/elevated_button_theme.dart';
 import 'costum_themes/text_theme.dart';
 
 class SAppTheme {
@@ -8,12 +9,15 @@ class SAppTheme {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
+    scaffoldBackgroundColor: Colors.white,
+    elevatedButtonTheme: SElevatedButtonTheme.lightElevatedButtonTheme,
     textTheme: STextTheme.lightTextTheme,
   );
 
   static ThemeData darkTheme = ThemeData(
     useMaterial3: true,
     fontFamily: 'Poppins',
+    scaffoldBackgroundColor: Colors.black,
     textTheme: STextTheme.darkTextTheme,
   );
 }
