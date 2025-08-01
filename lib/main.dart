@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           routerDelegate: MyRouterDelegate(),
           routeInformationParser: MyRouteInformationParser(),
+          backButtonDispatcher: RootBackButtonDispatcher(),
           theme: SAppTheme.lightTheme,
           darkTheme: SAppTheme.darkTheme,
           themeMode: themeController.theme,

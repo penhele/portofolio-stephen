@@ -10,8 +10,8 @@ class SElevatedButtonTheme {
       foregroundColor: SColors.white,
       backgroundColor: SColors.primary,
       textStyle: const TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.w500,
+        fontSize: 16.0,
+        fontWeight: FontWeight.w600,
         color: SColors.white,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -23,8 +23,8 @@ class SElevatedButtonTheme {
       foregroundColor: SColors.white,
       backgroundColor: SColors.primary,
       textStyle: const TextStyle(
-        fontSize: 14.0,
-        fontWeight: FontWeight.w500,
+        fontSize: 16.0,
+        fontWeight: FontWeight.w600,
         color: SColors.white,
       ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),

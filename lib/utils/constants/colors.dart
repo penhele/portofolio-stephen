@@ -4,6 +4,7 @@ class SColors {
   SColors._();
 
   static const Color primary = Color(0xffff5722);
+  static const Color secondary = Color(0xff2a4d31);
 
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF232323);

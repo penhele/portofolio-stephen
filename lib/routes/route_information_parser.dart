@@ -14,6 +14,11 @@ class MyRouteInformationParser
       return HomePageConfiguration();
     }
 
+    if (uri.pathSegments.length == 1 &&
+        uri.pathSegments.first == 'all-project') {
+      return AllProjectPageConfiguration();
+    }
+
     return UnknownPageConfiguration();
   }
 
@@ -21,6 +26,9 @@ class MyRouteInformationParser
   RouteInformation? restoreRouteInformation(PageConfiguration configuration) {
     return switch (configuration) {
       HomePageConfiguration() => const RouteInformation(location: "/"),
+      AllProjectPageConfiguration() => const RouteInformation(
+        location: "/all-project",
+      ),
       UnknownPageConfiguration() => const RouteInformation(
         location: "/unknown",
       ),

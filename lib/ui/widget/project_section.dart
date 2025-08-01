@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../model/page_configuration.dart';
 import '../../model/project_list.dart';
 import '../../model/project_model.dart';
 import '../../provider/show_more_provider.dart';
+import '../../routes/router_delegate.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/helpers/project_sort_helper.dart';
 import 'project_card.dart';
@@ -33,17 +35,12 @@ class ProjectSection extends StatelessWidget {
             return bDate.compareTo(aDate);
           });
 
-        final showAll = provider.showAll;
-        final List<ProjectModel> visibleProjects = showAll
-            ? sortedProjects
-            : sortedProjects.take(6).toList();
-
         return Column(
           children: [
             Wrap(
               spacing: spacing,
               runSpacing: spacing,
-              children: visibleProjects.map((project) {
+              children: sortedProjects.take(6).map((project) {
                 return SizedBox(
                   width: itemWidth,
                   child: ProjectCard(
@@ -63,10 +60,15 @@ class ProjectSection extends StatelessWidget {
 
             SizedBox(
               width: double.infinity,
+              height: 50,
               child: ElevatedButton(
-                style: ElevatedButton.styleFrom(),
-                onPressed: () => provider.toggle(),
-                child: Text(showAll ? 'Show Less' : 'Show More'),
+                onPressed: () {
+                  Router.neglect(context, () {
+                    (Router.of(context).routerDelegate as MyRouterDelegate)
+                        .setNewRoutePath(AllProjectPageConfiguration());
+                  });
+                },
+                child: Text('More Projects'),
               ),
             ),
           ],
