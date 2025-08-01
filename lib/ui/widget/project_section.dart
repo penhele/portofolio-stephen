@@ -68,7 +68,7 @@ class ProjectSection extends StatelessWidget {
                         .setNewRoutePath(AllProjectPageConfiguration());
                   });
                 },
-                child: Text('More Projects'),
+                child: const Text('More Projects'),
               ),
             ),
           ],
