@@ -1,25 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
+import 'package:get/get.dart';
 
-import '../model/project_list.dart';
-import '../model/project_model.dart';
-import '../provider/show_more_provider.dart';
+import '../controllers/theme_controller.dart';
+import '../utils/constants/colors.dart';
 import '../utils/constants/sizes.dart';
-import '../utils/helpers/project_sort_helper.dart';
 import 'widget/profile_image.dart';
 import 'widget/profile_text.dart';
-import 'widget/project_card.dart';
+import 'widget/project_section.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final provider = context.watch<ShowMoreProvider>();
-
-    if (!provider.initialized) {
-      return const Center(child: CircularProgressIndicator());
-    }
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < 800;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -31,29 +26,80 @@ class HomeScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      bool isWideScreen = constraints.maxWidth >= 600;
-
-                      return isWideScreen
-                          ? const Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Expanded(child: ProfileText()),
-                                SizedBox(width: SSizes.spaceBtwSection),
-                                ProfileImage(),
-                              ],
-                            )
-                          : const Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                ProfileImage(),
-                                SizedBox(height: SSizes.spaceBtwSection),
-                                ProfileText(),
-                              ],
-                            );
-                    },
+                  Container(
+                    width: double.infinity,
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 8,
+                      vertical: 8,
+                    ),
+                    decoration: BoxDecoration(
+                      color: SColors.primary,
+                      borderRadius: BorderRadius.circular(40),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          height: 45,
+                          decoration: BoxDecoration(
+                            color: const Color(0xff2a4d31),
+                            borderRadius: BorderRadius.circular(40),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 12),
+                            child: Center(
+                              child: SelectableText(
+                                'Portofolio',
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .headlineSmall!
+                                    .copyWith(color: Colors.white),
+                              ),
+                            ),
+                          ),
+                        ),
+                        Container(
+                          height: 45,
+                          width: 45,
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            shape: BoxShape.circle,
+                          ),
+                          child: GetBuilder<ThemeController>(
+                            builder: (controller) => IconButton(
+                              onPressed: () => controller.toggleTheme(),
+                              icon: Icon(
+                                controller.isDarkMode
+                                    ? Icons.light_mode
+                                    : Icons.dark_mode,
+                                color: Colors.black,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
+                  const SizedBox(height: SSizes.spaceBtwItems * 2),
+
+                  isMobile
+                      ? const Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            ProfileImage(),
+                            SizedBox(height: SSizes.spaceBtwSection),
+                            ProfileText(),
+                          ],
+                        )
+                      : const Row(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Expanded(child: ProfileText()),
+                            SizedBox(width: SSizes.spaceBtwSection),
+                            ProfileImage(),
+                          ],
+                        ),
+
                   const SizedBox(height: SSizes.spaceBtwItems * 2),
 
                   const SelectableText(
@@ -62,63 +108,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: SSizes.spaceBtwItems),
 
-                  LayoutBuilder(
-                    builder: (context, constraints) {
-                      const double spacing = 20;
-                      int columnCount = constraints.maxWidth > 800 ? 2 : 1;
-                      double totalSpacing = spacing * (columnCount - 1);
-                      double itemWidth =
-                          (constraints.maxWidth - totalSpacing) / columnCount;
-
-                      final List<ProjectModel> sortedProjects = [...projectList]
-                        ..sort((a, b) {
-                          final DateTime aDate =
-                              parseEndDate(a.duration) ?? DateTime(1900);
-                          final DateTime bDate =
-                              parseEndDate(b.duration) ?? DateTime(1900);
-                          return bDate.compareTo(aDate);
-                        });
-
-                      final showAll = provider.showAll;
-                      final List<ProjectModel> visibleProjects = showAll
-                          ? sortedProjects
-                          : sortedProjects.take(6).toList();
-
-                      return Column(
-                        children: [
-                          Wrap(
-                            spacing: spacing,
-                            runSpacing: spacing,
-                            children: visibleProjects.map((project) {
-                              return SizedBox(
-                                width: itemWidth,
-                                child: ProjectCard(
-                                  title: project.title,
-                                  description: project.description,
-                                  githubUrl: project.githubUrl,
-                                  thumbnail: project.thumbnail,
-                                  youtubebUrl: project.youtubeUrl,
-                                  documentUrl: project.documentUrl,
-                                  duration: project.duration,
-                                  language: project.language,
-                                ),
-                              );
-                            }).toList(),
-                          ),
-                          const SizedBox(height: SSizes.spaceBtwSection),
-
-                          SizedBox(
-                            width: double.infinity,
-                            child: ElevatedButton(
-                              style: ElevatedButton.styleFrom(),
-                              onPressed: () => provider.toggle(),
-                              child: Text(showAll ? 'Show Less' : 'Show More'),
-                            ),
-                          ),
-                        ],
-                      );
-                    },
-                  ),
+                  const ProjectSection(),
                 ],
               ),
             ),

@@ -9,6 +9,24 @@ class SElevatedButtonTheme {
     style: ElevatedButton.styleFrom(
       foregroundColor: SColors.white,
       backgroundColor: SColors.primary,
+      textStyle: const TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w500,
+        color: SColors.white,
+      ),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+    ),
+  );
+
+  static final darkElevatedButtonTheme = ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      foregroundColor: SColors.white,
+      backgroundColor: SColors.primary,
+      textStyle: const TextStyle(
+        fontSize: 14.0,
+        fontWeight: FontWeight.w500,
+        color: SColors.white,
+      ),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
     ),
   );

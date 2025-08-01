@@ -11,6 +11,8 @@ class ProfileText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -66,21 +68,21 @@ class ProfileText extends StatelessWidget {
         ),
         const SizedBox(height: SSizes.spaceBtwItems),
 
-        const Wrap(
+        Wrap(
           spacing: 16,
           runSpacing: 16,
           children: [
             SocialButton(
               url: 'https://github.com/penhele',
               label: STexts.github,
-              iconPath: SImages.githubLogo,
+              iconPath: isDark ? SImages.githubDarkLogo : SImages.githubLogo,
             ),
-            SocialButton(
+            const SocialButton(
               url: 'https://linkedin.com/in/stephenhelenus',
               label: STexts.linkedin,
               iconPath: SImages.linkedinLogo,
             ),
-            SocialButton(
+            const SocialButton(
               url: 'https://instagram.com/stephenhelenus',
               label: STexts.instagram,
               iconPath: SImages.instagramLogo,

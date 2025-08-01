@@ -10,6 +10,7 @@ class SAppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     scaffoldBackgroundColor: Colors.white,
+    brightness: Brightness.light,
     elevatedButtonTheme: SElevatedButtonTheme.lightElevatedButtonTheme,
     textTheme: STextTheme.lightTextTheme,
   );
@@ -18,6 +19,8 @@ class SAppTheme {
     useMaterial3: true,
     fontFamily: 'Poppins',
     scaffoldBackgroundColor: Colors.black,
+    brightness: Brightness.dark,
+    elevatedButtonTheme: SElevatedButtonTheme.darkElevatedButtonTheme,
     textTheme: STextTheme.darkTextTheme,
   );
 }

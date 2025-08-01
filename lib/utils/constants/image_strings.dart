@@ -2,6 +2,7 @@ class SImages {
   static const profilePhoto = 'assets/profil.png';
 
   static const githubLogo = 'assets/images/social/github.png';
+  static const githubDarkLogo = 'assets/images/social/github-dark.png';
   static const linkedinLogo = 'assets/images/social/linkedin.png';
   static const youtubeLogo = 'assets/images/social/youtube.png';
   static const documentLogo = 'assets/images/social/document.png';

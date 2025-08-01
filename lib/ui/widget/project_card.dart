@@ -78,13 +78,10 @@ class _ProjectCardState extends State<ProjectCard> {
                 duration: const Duration(milliseconds: 200),
                 curve: Curves.easeInOut,
                 decoration: BoxDecoration(
-                  color: SColors.white,
-                  border: Border.all(color: SColors.black),
-                  borderRadius: BorderRadius.circular(SSizes.radiusOutside),
                   boxShadow: _isHovered
                       ? [
                           BoxShadow(
-                            color: SColors.black.withValues(alpha: 0.2),
+                            color: SColors.black.withValues(alpha: 0.3),
                             blurRadius: 12,
                             offset: const Offset(0, 8),
                           ),
@@ -94,6 +91,7 @@ class _ProjectCardState extends State<ProjectCard> {
                 child: Container(
                   height: cardHeight,
                   decoration: BoxDecoration(
+                    color: Theme.of(context).cardColor,
                     border: Border.all(color: SColors.black),
                     borderRadius: BorderRadius.circular(SSizes.radiusOutside),
                   ),
@@ -141,11 +139,7 @@ class _ProjectCardState extends State<ProjectCard> {
                               child: SelectableText(
                                 widget.duration,
                                 style: Theme.of(context).textTheme.bodyMedium!
-                                    .copyWith(
-                                      color: isDark
-                                          ? Colors.black
-                                          : Colors.white,
-                                    ),
+                                    .copyWith(color: Colors.white),
                               ),
                             ),
                           ],
@@ -171,7 +165,9 @@ class _ProjectCardState extends State<ProjectCard> {
                                   SocialButton(
                                     url: widget.githubUrl!,
                                     label: STexts.github,
-                                    iconPath: SImages.githubLogo,
+                                    iconPath: isDark
+                                        ? SImages.githubDarkLogo
+                                        : SImages.githubLogo,
                                   ),
 
                                 if (widget.youtubebUrl != null) ...[

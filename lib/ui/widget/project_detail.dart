@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constants/colors.dart';
 import '../../utils/constants/image_strings.dart';
 import '../../utils/constants/sizes.dart';
 import '../../utils/constants/text_strings.dart';
@@ -29,6 +30,8 @@ class ProjectDetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Dialog(
       child: ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: 600, minWidth: 300),
@@ -73,28 +76,30 @@ class ProjectDetailScreen extends StatelessWidget {
                           SocialButton(
                             url: githubUrl!,
                             label: STexts.github,
-                            iconPath: SImages.githubLogo,
+                            iconPath: isDark
+                                ? SImages.githubDarkLogo
+                                : SImages.githubLogo,
                           ),
 
-                        if (youtubebUrl != null)
+                        if (youtubebUrl != null) ...[
                           const SizedBox(width: SSizes.spaceBtwMenu),
 
-                        if (youtubebUrl != null)
                           SocialButton(
                             url: youtubebUrl!,
                             label: STexts.youtube,
                             iconPath: SImages.youtubeLogo,
                           ),
+                        ],
 
-                        if (documentUrl != null)
+                        if (documentUrl != null) ...[
                           const SizedBox(width: SSizes.spaceBtwMenu),
 
-                        if (documentUrl != null)
                           SocialButton(
                             url: documentUrl!,
                             label: STexts.document,
                             iconPath: SImages.documentLogo,
                           ),
+                        ],
                       ],
                     ),
                     if (language != null)
@@ -109,12 +114,14 @@ class ProjectDetailScreen extends StatelessWidget {
                     vertical: 3,
                   ),
                   decoration: BoxDecoration(
-                    color: Colors.indigo.shade100,
+                    color: SColors.primary,
                     borderRadius: BorderRadius.circular(SSizes.radiusInside),
                   ),
                   child: SelectableText(
                     duration,
-                    style: Theme.of(context).textTheme.bodyMedium,
+                    style: Theme.of(
+                      context,
+                    ).textTheme.bodyMedium!.copyWith(color: Colors.white),
                   ),
                 ),
               ],
