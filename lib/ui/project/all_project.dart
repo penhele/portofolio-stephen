@@ -14,7 +14,7 @@ class AllProjectScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 800;
+    final isMobile = screenWidth < SSizes.mobileScreenSize;
 
     return Scaffold(
       body: SingleChildScrollView(

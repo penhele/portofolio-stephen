@@ -18,7 +18,7 @@ class ProfileText extends StatelessWidget {
       children: [
         LayoutBuilder(
           builder: (context, constraints) {
-            bool isMobile = constraints.maxWidth < 800;
+            bool isMobile = constraints.maxWidth < SSizes.mobileScreenSize;
 
             return isMobile
                 ? Column(

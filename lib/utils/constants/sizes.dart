@@ -6,4 +6,9 @@ class SSizes {
   static const double paddingProjectDetail = 16.0;
   static const double radiusOutside = 16.0;
   static const double radiusInside = 8.0;
+
+  static const double paddingMd = 16.0;
+  static const double paddingLg = 16.0;
+
+  static const double mobileScreenSize = 800;
 }

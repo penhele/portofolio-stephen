@@ -14,7 +14,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-    final isMobile = screenWidth < 800;
+    final isMobile = screenWidth < SSizes.mobileScreenSize;
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -23,8 +23,8 @@ class HomeScreen extends StatelessWidget {
             constraints: const BoxConstraints(maxWidth: 1400),
             child: Padding(
               padding: EdgeInsets.symmetric(
-                vertical: 32,
-                horizontal: isMobile ? 16 : 32,
+                vertical: SSizes.paddingLg,
+                horizontal: isMobile ? SSizes.paddingMd : SSizes.paddingLg,
               ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,10 +59,6 @@ class HomeScreen extends StatelessWidget {
                   const SizedBox(height: SSizes.spaceBtwSection),
 
                   const BannerSection(),
-                  // const SizedBox(height: SSizes.spaceBtwSection),
-
-                  // const TitleSection(title: "My Experience"),
-                  // const SizedBox(height: SSizes.spaceBtwItems),
                 ],
               ),
             ),

@@ -39,10 +39,11 @@ class _ProjectCardState extends State<ProjectCard> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final screenWidth = MediaQuery.of(context).size.width;
+    final isMobile = screenWidth < SSizes.mobileScreenSize;
 
     return LayoutBuilder(
       builder: (context, constraints) {
-        final bool isMobile = constraints.maxWidth < 600;
         final double cardHeight = constraints.maxWidth >= 1200
             ? 350
             : (isMobile ? 400 : 500);

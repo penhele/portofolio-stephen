@@ -11,7 +11,7 @@ class BannerSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: SSizes.paddingMd),
       width: double.infinity,
       decoration: BoxDecoration(
         color: SColors.secondary,

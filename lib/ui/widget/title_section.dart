@@ -7,9 +7,6 @@ class TitleSection extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SelectableText(
-      title,
-      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-    );
+    return SelectableText(title, style: Theme.of(context).textTheme.titleLarge);
   }
 }
