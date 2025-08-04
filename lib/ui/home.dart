@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../model/project_list.dart';
-import '../utils/constants/colors.dart';
 import '../utils/constants/sizes.dart';
-import '../utils/helpers/project_utils.dart';
+import 'widget/banner_section.dart';
 import 'widget/header_section.dart';
 import 'widget/profile_image.dart';
 import 'widget/profile_text.dart';
@@ -24,7 +22,10 @@ class HomeScreen extends StatelessWidget {
           child: ConstrainedBox(
             constraints: const BoxConstraints(maxWidth: 1400),
             child: Padding(
-              padding: EdgeInsets.all(isMobile ? 16 : 32),
+              padding: EdgeInsets.symmetric(
+                vertical: 32,
+                horizontal: isMobile ? 16 : 32,
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -57,66 +58,11 @@ class HomeScreen extends StatelessWidget {
                   const ProjectSection(),
                   const SizedBox(height: SSizes.spaceBtwSection),
 
-                  Container(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    width: double.infinity,
-                    decoration: BoxDecoration(
-                      color: SColors.secondary,
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            Text(
-                              'Total Project',
-                              style: Theme.of(context).textTheme.headlineSmall!
-                                  .copyWith(color: SColors.white),
-                            ),
-                            const SizedBox(height: SSizes.spaceBtwMenu),
+                  const BannerSection(),
+                  // const SizedBox(height: SSizes.spaceBtwSection),
 
-                            Text(
-                              projectList.length.toString(),
-                              style: Theme.of(context).textTheme.headlineLarge!
-                                  .copyWith(color: SColors.white),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          children: [
-                            Text(
-                              'Most Used Languages',
-                              style: Theme.of(context).textTheme.headlineSmall!
-                                  .copyWith(color: SColors.white),
-                            ),
-                            const SizedBox(height: SSizes.spaceBtwMenu),
-
-                            Row(
-                              children: getMostUsedLanguages(projectList)
-                                  .entries
-                                  .take(3)
-                                  .map(
-                                    (entry) => Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                        vertical: 1,
-                                        horizontal: 8,
-                                      ),
-                                      child: Image.asset(
-                                        entry.key,
-                                        height: 32,
-                                        width: 32,
-                                      ),
-                                    ),
-                                  )
-                                  .toList(),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
+                  // const TitleSection(title: "My Experience"),
+                  // const SizedBox(height: SSizes.spaceBtwItems),
                 ],
               ),
             ),

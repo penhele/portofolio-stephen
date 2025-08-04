@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 DateTime? parseEndDate(String? duration) {
   if (duration == null) return null;
 
@@ -17,9 +19,24 @@ DateTime? parseEndDate(String? duration) {
 
 DateTime _monthYearToDate(String input) {
   final parts = input.split(' ');
-  if (parts.length != 2) throw const FormatException('Invalid format');
-  final month = _monthMap[parts[0]]!;
-  final year = int.parse(parts[1]);
+  if (parts.length != 2) {
+    debugPrint('❌ Format invalid: "$input"'); // bantu debug
+    throw const FormatException('Invalid format');
+  }
+
+  final monthName = parts[0];
+  final month = _monthMap[monthName];
+  if (month == null) {
+    debugPrint('❌ Bulan tidak dikenal: "$monthName"');
+    throw const FormatException('Unknown month');
+  }
+
+  final year = int.tryParse(parts[1]);
+  if (year == null) {
+    debugPrint('❌ Tahun tidak valid: "${parts[1]}"');
+    throw const FormatException('Invalid year');
+  }
+
   return DateTime(year, month);
 }
 

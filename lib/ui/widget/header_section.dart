@@ -48,7 +48,7 @@ class HeaderSection extends StatelessWidget {
               builder: (controller) => IconButton(
                 onPressed: () => controller.toggleTheme(),
                 icon: Icon(
-                  controller.isDarkMode ? Icons.light_mode : Icons.dark_mode,
+                  controller.isDarkMode ? Icons.dark_mode : Icons.light_mode,
                   color: Colors.black,
                 ),
               ),
