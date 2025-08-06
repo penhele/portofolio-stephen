@@ -20,7 +20,7 @@ DateTime? parseEndDate(String? duration) {
 DateTime _monthYearToDate(String input) {
   final parts = input.split(' ');
   if (parts.length != 2) {
-    debugPrint('❌ Format invalid: "$input"'); // bantu debug
+    debugPrint('❌ Format invalid: "$input"');
     throw const FormatException('Invalid format');
   }
 

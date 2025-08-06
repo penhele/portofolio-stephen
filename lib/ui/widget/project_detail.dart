@@ -44,10 +44,17 @@ class ProjectDetailScreen extends StatelessWidget {
                   builder: (context, constraints) {
                     double imageWidth = constraints.maxWidth;
 
-                    return Image.asset(
-                      thumbnail,
-                      width: imageWidth,
-                      fit: BoxFit.contain,
+                    return InteractiveViewer(
+                      clipBehavior: Clip.hardEdge,
+                      panEnabled: true,
+                      scaleEnabled: true,
+                      minScale: 1.0,
+                      maxScale: 4.0,
+                      child: Image.asset(
+                        thumbnail,
+                        width: imageWidth,
+                        fit: BoxFit.contain,
+                      ),
                     );
                   },
                 ),

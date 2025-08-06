@@ -49,21 +49,25 @@ class AllProjectScreen extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Stack(
+                        alignment: Alignment.center,
                         children: [
-                          GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: Container(
-                              width: 50,
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                color: SColors.primary,
-                                borderRadius: BorderRadius.circular(40),
-                              ),
-                              child: const Icon(
-                                Icons.arrow_back_ios_new,
-                                color: SColors.white,
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.of(context).pop();
+                              },
+                              child: Container(
+                                width: 50,
+                                padding: const EdgeInsets.all(8),
+                                decoration: BoxDecoration(
+                                  color: SColors.primary,
+                                  borderRadius: BorderRadius.circular(40),
+                                ),
+                                child: const Icon(
+                                  Icons.arrow_back_ios_new,
+                                  color: SColors.white,
+                                ),
                               ),
                             ),
                           ),
@@ -75,6 +79,7 @@ class AllProjectScreen extends StatelessWidget {
                           ),
                         ],
                       ),
+
                       const SizedBox(height: SSizes.spaceBtwItems),
 
                       Wrap(
